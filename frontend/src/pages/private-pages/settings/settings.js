@@ -1,14 +1,17 @@
 // Import Engine
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 // Create Function For Settings Page
 const SettingsPage = () => {
   return (
     <section className="container">
       <h1 className="large text-primary">Настройки</h1>
-      <p className="lead">
-        Раздел в разработке...
-      </p>
+      <div className='dash-buttons'>
+      <Link to='/edit-profile' className='btn btn-light'>
+        Редактировать профиль
+      </Link>
+    </div>
     </section>
   )
 };

@@ -1,11 +1,10 @@
 // Import Actions Types
 import {
   REGISTER_SUCCESS,
-  //REGISTER_FAIL,
   USER_LOADED,
   AUTH_ERROR,
   LOGIN_SUCCESS,
-  //LOGIN_FAIL,
+  USER_ERROR,
   LOGOUT,
   ACCOUNT_DELETED
 } from '../types/auth';
@@ -39,6 +38,13 @@ function authReducer(state = initialState, action) {
         ...payload,
         isAuthenticated: true,
         loading: false
+      };
+    case USER_ERROR:
+      return {
+        ...state,
+        error: payload,
+        loading: false,
+        user: null
       };
     case ACCOUNT_DELETED:
     case AUTH_ERROR:

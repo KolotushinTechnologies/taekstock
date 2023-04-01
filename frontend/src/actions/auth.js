@@ -12,6 +12,7 @@ import {
   AUTH_ERROR,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
+  USER_ERROR,
   LOGOUT
 } from '../types/auth';
 
@@ -29,7 +30,7 @@ export const loadUser = () => async (dispatch) => {
 
     dispatch({
       type: USER_LOADED,
-      payload: res.data
+      payload: res.data.data
     });
   } catch (err) {
     dispatch({
@@ -87,6 +88,30 @@ export const login = (email, password) => async (dispatch) => {
     });
   }
 };
+
+export const updateProfile = (formData) => async (dispatch) => {
+    try {
+      const res = await api.put('/users/update-my-profile', formData);
+
+      dispatch({
+        type: USER_LOADED,
+        payload: res.data.data
+      });
+
+      dispatch(setAlert('Профиль обновлен', 'success'));
+    } catch (err) {
+      const error = err.response.data.message;
+
+      if (error) {
+        dispatch(setAlert(error, 'danger'));
+      }
+
+      dispatch({
+        type: USER_ERROR,
+        payload: { msg: err.response.statusText, status: err.response.status }
+      });
+    }
+  };
 
 // Logout
 export const logout = () => ({ type: LOGOUT });

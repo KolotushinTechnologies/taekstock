@@ -33,7 +33,7 @@ async function authenticatedMiddleware(
         }
 
         const user = await UserModel.findById(payload.user.id)
-            .select('-password')
+            .select('-password -roles')
             .exec();
 
         if (!user) {

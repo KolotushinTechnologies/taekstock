@@ -21,7 +21,7 @@ const ProfilePage = ({
     <section className="container">
       <h1 className="large text-primary">Мой Профиль</h1>
       <p className="lead">
-        <i className="fas fa-user" /> Добро пожаловать {user?.data && user?.data?.firstname}
+        <i className="fas fa-user" /> Добро пожаловать {user && user?.firstname}
       </p>
     </section>
   );

@@ -34,6 +34,7 @@ import RegistrationPage from './pages/open-pages/registration/registration';
 // Import Private Pages
 import ProfilePage from './pages/private-pages/profile/profile';
 import SettingsPage from './pages/private-pages/settings/settings';
+import EditProfilePage from './pages/private-pages/settings/edit-profile';
 import StockPage from './pages/private-pages/stock/stock';
 
 // Import Styles
@@ -74,6 +75,10 @@ function App() {
           <Route
             path="settings"
             element={<PrivateRoute component={SettingsPage} />}
+          />
+          <Route
+            path="edit-profile"
+            element={<PrivateRoute component={EditProfilePage} />}
           />
           <Route
             path="stock"

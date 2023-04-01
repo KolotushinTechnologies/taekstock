@@ -268,7 +268,7 @@ class UserService {
             }
             
             // If successful, we find the updated User in the database
-            const updatedUser = await this.user.findOne({ _id: user._id }).select('-password');
+            const updatedUser = await this.user.findOne({ _id: user._id }).select('-password -roles');
 
             // If we found an Updated User, then we return it to the User
             return updatedUser;
