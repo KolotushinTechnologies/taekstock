@@ -1,0 +1,12 @@
+// Import Engine Redux
+import { combineReducers } from 'redux';
+
+// Import Reducers
+import alert from './alert';
+import auth from './auth';
+
+// Export Combine Reducers
+export default combineReducers({
+  alert,
+  auth,
+});
