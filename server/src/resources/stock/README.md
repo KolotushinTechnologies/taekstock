@@ -1,7 +1,7 @@
 # Requests For Stocks
 
 ### Get all stocks
-GET http://localhost:5000/api/admin/stocks/all
+GET http://localhost:5000/api/stocks/all
 
 response: 
 
@@ -30,7 +30,7 @@ response:
 ```
 
 ### Get stock by ID
-GET http://localhost:5000/api/admin/stocks/:stock_id
+GET http://localhost:5000/api/stocks/:stock_id
 
 request:
 
@@ -38,7 +38,7 @@ params:
 
 *stock_id: required
 
-http://localhost:5000/api/admin/stocks/64289e51999f4228ff001837
+http://localhost:5000/api/stocks/64289e51999f4228ff001837
 
 response: 
 
@@ -56,7 +56,7 @@ response:
 ```
 
 ### Search stocks
-POST http://localhost:5000/api/admin/stocks/searching/all
+POST http://localhost:5000/api/stocks/searching/all
 
 request:
 
