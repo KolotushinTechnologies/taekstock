@@ -1,4 +1,8 @@
 /* Global Styles */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --primary-color: #1ab8ff;
   --dark-color: #343a40;
@@ -18,11 +22,11 @@ body {
   font-size: 1rem;
   line-height: 1.6;
   background-color: #fff;
-  color: #333;
+  /* color: #333; */
 }
 
 a {
-  color: var(--primary-color);
+  color: #000;
   text-decoration: none;
 }
 
@@ -57,11 +61,11 @@ img {
   margin-bottom: 1rem;
 }
 
-.large {
+/* .large {
   font-size: 3rem;
   line-height: 1.2;
   margin-bottom: 1rem;
-}
+} */
 
 .lead {
   font-size: 1.5rem;

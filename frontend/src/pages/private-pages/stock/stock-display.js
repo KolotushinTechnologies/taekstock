@@ -7,8 +7,8 @@ const StockDisplay = ({ data }) => (
   <div>
     {data.map((item) => (
       <Link to={item._id} key={item._id}>
-        <div>
-          <h2>{item?.title}</h2>
+        <div className="">
+          <h2 className="text-black">{item?.title}</h2>
           <p>{item?.description}</p>
           <img className="image-stock" src={item?.image} alt="" />
         </div>
