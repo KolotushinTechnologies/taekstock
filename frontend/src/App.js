@@ -36,6 +36,7 @@ import ProfilePage from './pages/private-pages/profile/profile';
 import SettingsPage from './pages/private-pages/settings/settings';
 import EditProfilePage from './pages/private-pages/settings/edit-profile';
 import StockPage from './pages/private-pages/stock/stock';
+import StockidPage from './pages/private-pages/stock/stockid';
 
 // Import Styles
 import './App.css';
@@ -83,6 +84,10 @@ function App() {
           <Route
             path="stock"
             element={<PrivateRoute component={StockPage} />}
+          />
+          <Route
+            path="stock/:id"
+            element={<PrivateRoute component={StockidPage} />}
           />
           <Route path="/*" element={<NotFound />} />
         </Routes>
