@@ -16,12 +16,13 @@ const StockidPage = ({ getStockById, stock: { stock } }) => {
   }, [getStockById, id]);
   return (
     <section className="container">
-      <div key={stock?.id}>
-          <h2>{stock?.title}</h2>
-          <p>{stock?.description}</p>
-          <img className="image-stock" src={stock?.image} alt="" />
+      <div key={stock?.id} className="">
+        <div className="">
+          <h2 className="text-center text-[40px] font-bold text-[#00dfff]">{stock?.title}</h2>
+          <img className="w-full max-h-[250px] h-full object-cover rounded-xl" src={stock?.image} alt="" />
+          <p className="text-[20px] mt-5">{stock?.description}</p>
         </div>
-    
+      </div>
     </section>
   );
 };

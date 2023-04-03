@@ -39,6 +39,7 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
     </ul>
   );
 
+
   // Navbar Links For Not Authorized Users
   const guestLinks = (
     <ul>
@@ -58,10 +59,10 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
   );
 
   return (
-    <nav className="navbar bg-dark">
+    <nav className="navbar bg-[color:var(--main-color)]">
       <h1>
         <Link to="/">
-          <i className="fas fa-code" /> taekstock
+          <span className='text-[20px] font-bold'>taekstock</span>
         </Link>
       </h1>
       <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>

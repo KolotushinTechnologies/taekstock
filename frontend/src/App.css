@@ -9,6 +9,8 @@
   --light-color: #f4f4f4;
   --danger-color: #dc3545;
   --success-color: #28a745;
+  --main-color: #365d98;
+  --input-color: #2a4773;
 }
 
 * {
@@ -17,8 +19,13 @@
   padding: 0;
 }
 
+@font-face {
+  font-family: "Segoe";
+  src: url(../public/Segoe\ UI.ttf);
+}
+
 body {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Segoe', sans-serif;
   font-size: 1rem;
   line-height: 1.6;
   background-color: #fff;
@@ -317,7 +324,6 @@ button {
   justify-content: space-between;
   align-items: center;
   padding: 0.7rem 2rem;
-  position: fixed;
   z-index: 1;
   width: 100%;
   top: 0;

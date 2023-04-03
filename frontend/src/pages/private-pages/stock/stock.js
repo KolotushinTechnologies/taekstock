@@ -19,7 +19,7 @@ const StockPage = ({ getAllStocks, stock: { stocks } }) => {
 
   return (
     <section className="container">
-      <h1 className="text-[red]">taekstock live</h1>
+      <h1 className="flex justify-center items-center text-[60px] font-bold text-[#00dfff] px-8 pb-8">taekstock live</h1>
       <Suspense fallback={<div>Loading data...</div>}>
         <DataDisplay data={stocks} />
       </Suspense>
