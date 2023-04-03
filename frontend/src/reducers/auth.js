@@ -6,7 +6,8 @@ import {
   LOGIN_SUCCESS,
   USER_ERROR,
   LOGOUT,
-  ACCOUNT_DELETED
+  ACCOUNT_DELETED,
+  RESET_USER,
 } from '../types/auth';
 
 // Create Initial State
@@ -45,6 +46,12 @@ function authReducer(state = initialState, action) {
         error: payload,
         loading: false,
         user: null
+      };
+    case RESET_USER:
+      return {
+        ...state,
+        user: null,
+        loading: false
       };
     case ACCOUNT_DELETED:
     case AUTH_ERROR:

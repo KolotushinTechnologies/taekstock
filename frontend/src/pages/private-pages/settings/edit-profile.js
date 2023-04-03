@@ -4,8 +4,16 @@ import PropTypes from "prop-types";
 import { Link, useNavigate } from "react-router-dom";
 
 // Import Engine Redux
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
+
+// Import Actions
 import { updateProfile, loadUser } from "../../../actions/auth";
+
+// Import Actions Types
+import { RESET_USER } from "../../../types/auth";
+
+// Import Components
+import Spinner from "../../../components/layout/spinner/spinner";
 
 const initialState = {
   firstname: "",
@@ -20,12 +28,17 @@ const EditProfilePage = ({
   loadUser,
 }) => {
   const [formData, setFormData] = useState(initialState);
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
   useEffect(() => {
     // if there is no profile, attempt to fetch one
-    if (!user) loadUser();
+    if (!user) {
+      dispatch({ type: RESET_USER });
+
+      loadUser();
+    }
 
     // if we finished loading and we do have a profile
     // then build our profileData
@@ -39,7 +52,7 @@ const EditProfilePage = ({
       // set local state with the profileData
       setFormData(profileData);
     }
-  }, [loading, loadUser, user]);
+  }, [dispatch, loading, loadUser, user]);
 
   const { firstname, lastname, phoneNumber, email } = formData;
 
@@ -53,7 +66,9 @@ const EditProfilePage = ({
     });
   };
 
-  return (
+  return loading || user === null ? (
+    <Spinner />
+  ) : (
     <section className="bg-[url('/public/collage-585x391.webp')] h-screen flex flex-col items-center justify-center relative">
       <div className="w-full h-full absolute top-0 bottom-0 right-0 left-0 bg-black bg-opacity-70"></div>
       <div className="bg-[color:var(--main-color)] flex flex-col max-w-md w-full p-8 z-10 rounded-[20px]">

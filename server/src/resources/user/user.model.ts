@@ -13,6 +13,19 @@ const UserSchema = new Schema(
         phoneNumber: { type: String, trim: true, },
         email: { type: String, trim: true, required: true },
         password: { type: String, trim: true, required: true },
+        // TODO:
+        // userStatus: { type: Schema.Types.ObjectId, ref: 'UserStatus' },
+        userStatus: { type: String, maxlength: 50 },
+        // TODO:
+        // command: { type: Schema.Types.ObjectId, ref: 'Command' },
+        command: { type: String, maxlength: 150 },
+        // TODO:
+        // country: { type: Schema.Types.ObjectId, ref: 'Country' },
+        country: { type: String, maxlength: 150 },
+        // TODO:
+        // city: { type: Schema.Types.ObjectId, ref: 'City' },
+        city: { type: String, maxlength: 150 },
+        description: { type: String, maxlength: 200 },
         roles: [{ type: String, trim: true, ref: 'Role', required: true }],
         secretCode: { type: String, trim: true, },
     },

@@ -3,18 +3,31 @@ import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 
 // Import Engine Redux
-import { connect } from "react-redux";
+import { connect, useDispatch } from 'react-redux';
 
 // Import Actions
 import { loadUser } from "../../../actions/auth";
 
-// Create Function For Profile Page
-const ProfilePage = ({ loadUser, auth: { user } }) => {
-  useEffect(() => {
-    loadUser();
-  }, [loadUser]);
+// Import Actions Types
+import { RESET_USER } from '../../../types/auth';
 
-  return (
+// Import Components
+import Spinner from '../../../components/layout/spinner/spinner';
+
+// Create Function For Profile Page    
+const ProfilePage = ({
+  loadUser,
+  auth: { user, loading },
+}) => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch({ type: RESET_USER });
+
+    loadUser();
+  }, [dispatch, loadUser]);
+
+  return loading || user === null ? (<Spinner />) : (
     <section className="flex flex-col">
       <div className="bg-[#1c1d22]">
         <p className="text-white text-[25px] p-4">

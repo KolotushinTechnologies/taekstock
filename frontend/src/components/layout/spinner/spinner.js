@@ -7,8 +7,8 @@ import { AiOutlineLoading3Quarters } from "react-icons/ai";
 // Create Function For Spinner Component
 const Spinner = () => (
   <Fragment>
-    <div style={{ position: "relative", display: "flex", alignItems: "center", justifyContent: "center" }}>
-      <AiOutlineLoading3Quarters className="loader" />
+    <div className="loader" style={{ position: "absolute", left: "50%", top: "50%", display: "flex", alignItems: "center", justifyContent: "center" }}>
+      <AiOutlineLoading3Quarters className="spinner-border" />
     </div>
   </Fragment>
 );
