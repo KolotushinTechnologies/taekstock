@@ -4,11 +4,17 @@ import {
     GET_STOCK,
     STOCK_ERROR,
     RESET_STOCKS,
-    RESET_STOCK
+    RESET_STOCK,
+    SET_SEARCH_STOCK,
+    SET_SEARCH_RESULTS,
+    SEARCH_SUCCESS,
+    SEARCH_FAILURE,
+    SEARCH_STOCK,
 } from '../types/stock';
 
 // Create Initial State
 const initialState = {
+    query: '',
     stocks: [],
     stock: null,
     loading: true,
@@ -51,6 +57,34 @@ function stockReducer(state = initialState, action) {
                 ...state,
                 stock: null,
                 loading: false
+            };
+        case SET_SEARCH_STOCK:
+            return {
+                ...state,
+                query: payload
+            };
+        case SET_SEARCH_RESULTS:
+            return {
+                ...state,
+                stocks: payload
+            };
+        case SEARCH_STOCK:
+            return {
+                ...state,
+                loading: true,
+                error: null
+            };
+        case SEARCH_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                stocks: payload
+            };
+        case SEARCH_FAILURE:
+            return {
+                ...state,
+                loading: false,
+                error: payload
             };
         default:
             return state;

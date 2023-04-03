@@ -31,6 +31,8 @@ import BlogPage from './pages/open-pages/blog/blog';
 import LoginPage from './pages/open-pages/login/login';
 import RegistrationPage from './pages/open-pages/registration/registration';
 
+import Test from './pages/open-pages/blog/test';
+
 // Import Private Pages
 import ProfilePage from './pages/private-pages/profile/profile';
 import SettingsPage from './pages/private-pages/settings/settings';
@@ -65,6 +67,7 @@ function App() {
         <Alert />
         <Routes>
           <Route path="/" element={<LandingPage />} />
+          <Route path="/test" element={<Test />} />
           <Route path="/events" element={<EventsPage />} />
           <Route path="/blog" element={<BlogPage />} />
           <Route path="registration" element={<RegistrationPage />} />

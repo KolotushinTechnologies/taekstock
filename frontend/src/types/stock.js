@@ -3,3 +3,9 @@ export const GET_STOCK = 'GET_STOCK';
 export const STOCK_ERROR = 'STOCK_ERROR';
 export const RESET_STOCKS = 'RESET_STOCKS';
 export const RESET_STOCK = 'RESET_STOCK';
+
+export const SET_SEARCH_STOCK = 'SET_SEARCH_STOCK';
+export const SET_SEARCH_RESULTS = 'SET_SEARCH_RESULTS';
+export const SEARCH_SUCCESS = 'SEARCH_SUCCESS';
+export const SEARCH_FAILURE = 'SEARCH_FAILURE';
+export const SEARCH_STOCK = 'SEARCH_STOCK';
