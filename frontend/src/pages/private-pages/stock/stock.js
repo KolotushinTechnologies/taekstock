@@ -1,21 +1,21 @@
 // Import Engine
-import React, { lazy, Suspense, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React, { lazy, Suspense, useEffect } from "react";
+import PropTypes from "prop-types";
 
 // Import Engine Redux
-import { connect, useDispatch } from 'react-redux';
+import { connect, useDispatch } from "react-redux";
 
 // Import Actions
-import { getAllStocks } from '../../../actions/stock';
+import { getAllStocks } from "../../../actions/stock";
 
 // Import Actions Types
-import { RESET_STOCKS } from '../../../types/stock';
+import { RESET_STOCKS } from "../../../types/stock";
 
 // Import Components
-import Spinner from '../../../components/layout/spinner/spinner';
+import Spinner from "../../../components/layout/spinner/spinner";
 
 // Create Data Display For Lazy Loading
-const DataDisplay = lazy(() => import('./stock-display'));
+const DataDisplay = lazy(() => import("./stock-display"));
 
 // Create Function For Stock Page
 const StockPage = ({ getAllStocks, stock: { stocks, loading } }) => {
@@ -27,24 +27,35 @@ const StockPage = ({ getAllStocks, stock: { stocks, loading } }) => {
     getAllStocks();
   }, [dispatch, getAllStocks]);
 
-  return loading || stocks === null ? (<Spinner />) : (
-    <section className="container">
-      <h1 className="flex justify-center items-center text-[60px] font-bold text-[#00dfff] px-8 pb-8">taekstock live</h1>
+  return loading || stocks === null ? (
+    <Spinner />
+  ) : (
+    <section className="container flex flex-col justify-center items-center ">
+      <div className="">
+        <h1 className="text-[60px] font-bold text-[#00dfff] px-8">
+          taekstock live
+        </h1>
+        <input
+          type="text"
+          className="border-2 rounded-[30px] py-[7px] pl-3 mb-7 w-full text-[12px]"
+          placeholder="Ведите имя или фамилию спортсмена"
+        />
+      </div>
       <Suspense fallback={<div>Loading data...</div>}>
         <DataDisplay data={stocks} />
       </Suspense>
     </section>
-  )
+  );
 };
 
 // Export Stock Page
 StockPage.propTypes = {
   getAllStocks: PropTypes.func.isRequired,
-  stock: PropTypes.object.isRequired
+  stock: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  stock: state.stock
+  stock: state.stock,
 });
 
 export default connect(mapStateToProps, { getAllStocks })(StockPage);

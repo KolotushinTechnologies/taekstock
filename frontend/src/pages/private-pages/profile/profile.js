@@ -29,7 +29,7 @@ const ProfilePage = ({
 
   return loading || user === null ? (<Spinner />) : (
     <section className="flex flex-col">
-      <div className="bg-[#1c1d22]">
+      <div className="bg-[#1c1d22] pt-[50px]">
         <p className="text-white text-[25px] p-4">
           Добро пожаловать {user && user?.firstname}
         </p>

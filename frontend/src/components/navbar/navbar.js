@@ -1,22 +1,23 @@
 // Import Engine
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import React, { Fragment } from "react";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 // Import Engine Redux
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
 // Import Actions
-import { logout } from '../../actions/auth';
+import { logout } from "../../actions/auth";
 
 // Create Function For Navbar Component
 const Navbar = ({ auth: { isAuthenticated }, logout }) => {
-
   // Navbar Links For Authorized Users
   const authLinks = (
     <ul>
       <li>
-        <Link style={{ fontWeight: 'bold', color: '#00dfff' }} to="/stock">taekstock live</Link>
+        <Link style={{ fontWeight: "bold", color: "#00dfff" }} to="/stock">
+          taekstock live
+        </Link>
       </li>
       <li>
         <Link to="/events">События</Link>
@@ -32,13 +33,12 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
       </li>
       <li>
         <a onClick={logout} href="#!">
-          <i className="fas fa-sign-out-alt" />{' '}
+          <i className="fas fa-sign-out-alt" />{" "}
           <span className="hide-sm">Выйти</span>
         </a>
       </li>
     </ul>
   );
-
 
   // Navbar Links For Not Authorized Users
   const guestLinks = (
@@ -59,10 +59,10 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
   );
 
   return (
-    <nav className="navbar bg-[color:var(--main-color)]">
+    <nav className="navbar bg-[color:var(--main-color)] flex items-center">
       <h1>
         <Link to="/">
-          <span className='text-[20px] font-bold'>taekstock</span>
+          <span className="text-[20px] font-bold">taekstock</span>
         </Link>
       </h1>
       <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
@@ -73,12 +73,12 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
 // Navbar Prop Types
 Navbar.propTypes = {
   logout: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
 };
 
 // Map State To Props For Navbar Component
 const mapStateToProps = (state) => ({
-  auth: state.auth
+  auth: state.auth,
 });
 
 // Export Navbar Component And Connect To Redux
