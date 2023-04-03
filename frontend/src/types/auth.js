@@ -7,3 +7,4 @@ export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const USER_ERROR = 'USER_ERROR';
 export const LOGOUT = 'LOGOUT';
 export const ACCOUNT_DELETED = 'ACCOUNT_DELETED';
+export const RESET_USER = 'RESET_USER';

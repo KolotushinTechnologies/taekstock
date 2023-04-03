@@ -3,6 +3,8 @@ import {
     GET_STOCKS,
     GET_STOCK,
     STOCK_ERROR,
+    RESET_STOCKS,
+    RESET_STOCK
 } from '../types/stock';
 
 // Create Initial State
@@ -36,6 +38,18 @@ function stockReducer(state = initialState, action) {
             return {
                 ...state,
                 error: payload,
+                loading: false
+            };
+        case RESET_STOCKS:
+            return {
+                ...state,
+                stocks: null,
+                loading: false
+            };
+        case RESET_STOCK:
+            return {
+                ...state,
+                stock: null,
                 loading: false
             };
         default:
