@@ -57,7 +57,7 @@ const StockPage = ({ getAllStocks, setSearchStock, searchStock, stock: { stocks,
           <Spinner />
         ) : (
           <Suspense fallback={<Spinner />}>
-            <DataDisplay data={stocks} />
+              <DataDisplay data={stocks} />
           </Suspense>
         )
       }

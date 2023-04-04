@@ -15,6 +15,9 @@ import { RESET_STOCK } from "../../../types/stock";
 // Import Components
 import Spinner from "../../../components/layout/spinner/spinner";
 
+// Import Styles From React Sprong
+import { useSpring, animated } from "react-spring";
+
 const StockidPage = ({ getStockById, stock: { stock, loading } }) => {
   const dispatch = useDispatch();
 
@@ -26,11 +29,18 @@ const StockidPage = ({ getStockById, stock: { stock, loading } }) => {
     getStockById(id);
   }, [dispatch, getStockById, id]);
 
+  // Create Data Link Spring
+  const dataLinkSpring = useSpring({
+    opacity: 1,
+    transform: "translateY(0px)",
+    from: { opacity: 0, transform: "translateY(50px)" },
+  });
+
   return loading || stock === null ? (
     <Spinner />
   ) : (
     <section className="container">
-      <div key={stock?.id} className="">
+      <animated.div key={stock?.id} className="" style={dataLinkSpring}>
         <div className="">
           <h2 className="text-center text-[40px] font-bold text-[#00dfff]">
             {stock?.title}
@@ -42,7 +52,7 @@ const StockidPage = ({ getStockById, stock: { stock, loading } }) => {
           />
           <p className="text-[20px] mt-5">{stock?.description}</p>
         </div>
-      </div>
+      </animated.div>
     </section>
   );
 };
