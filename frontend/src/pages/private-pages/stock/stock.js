@@ -6,7 +6,11 @@ import PropTypes from "prop-types";
 import { connect, useDispatch } from "react-redux";
 
 // Import Actions
-import { getAllStocks, setSearchStock, searchStock } from "../../../actions/stock";
+import {
+  getAllStocks,
+  setSearchStock,
+  searchStock,
+} from "../../../actions/stock";
 
 // Import Actions Types
 import { RESET_STOCKS } from "../../../types/stock";
@@ -18,9 +22,14 @@ import Spinner from "../../../components/layout/spinner/spinner";
 const DataDisplay = lazy(() => import("./stock-display"));
 
 // Create Function For Stock Page
-const StockPage = ({ getAllStocks, setSearchStock, searchStock, stock: { stocks, loading } }) => {
+const StockPage = ({
+  getAllStocks,
+  setSearchStock,
+  searchStock,
+  stock: { stocks, loading },
+}) => {
   const dispatch = useDispatch();
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     dispatch({ type: RESET_STOCKS });
@@ -29,7 +38,7 @@ const StockPage = ({ getAllStocks, setSearchStock, searchStock, stock: { stocks,
   }, [dispatch, getAllStocks]);
 
   const onChange = (e) => {
-    setQuery(e.target.value)
+    setQuery(e.target.value);
   };
 
   const handleSearch = () => {
@@ -38,30 +47,50 @@ const StockPage = ({ getAllStocks, setSearchStock, searchStock, stock: { stocks,
   };
 
   return (
-    <section className="container flex flex-col justify-center items-center ">
-      <div className="">
-        <h1 className="text-[60px] font-bold text-[#00dfff] px-8">
-          taekstock live
-        </h1>
-        <input
-          value={query}
-          onChange={onChange}
-          type="text"
-          className="border-2 rounded-[30px] py-[7px] pl-3 mb-7 w-full text-[12px]"
-          placeholder="Ведите имя или фамилию спортсмена"
-        />
-        <button onClick={handleSearch}>Поиск</button>
+    <div>
+      <div className="flex justify-between mt-[55px] bg-black items-center px-[2rem]">
+        <div className="flex items-center">
+          <ul>
+            <li>
+              <h2 className="text-[60px] font-bold text-[#00dfff]">
+                taekstock live
+              </h2>
+            </li>
+          </ul>
+        </div>
+
+        <div className="flex items-center">
+          <ul className="flex justify-between">
+            <li>
+              <input
+                value={query}
+                onChange={onChange}
+                type="text"
+                className="border-2 rounded-[30px] py-[7px] pl-3 mb-7 w-full text-[12px]"
+                placeholder="Введите имя или фамилию спортсмена"
+              />
+            </li>
+            <li>
+              <button
+                className="bg-white w-full rounded-xl py-[3px]"
+                onClick={handleSearch}
+              >
+                Поиск
+              </button>
+            </li>
+          </ul>
+        </div>
       </div>
-      {
-        loading || stocks === null ? (
+      <section className="container-stock flex flex-col items-center">
+        {loading || stocks === null ? (
           <Spinner />
         ) : (
           <Suspense fallback={<Spinner />}>
-              <DataDisplay data={stocks} />
+            <DataDisplay data={stocks} />
           </Suspense>
-        )
-      }
-    </section>
+        )}
+      </section>
+    </div>
   );
 };
 
@@ -77,4 +106,8 @@ const mapStateToProps = (state) => ({
   stock: state.stock,
 });
 
-export default connect(mapStateToProps, { getAllStocks, setSearchStock, searchStock })(StockPage);
+export default connect(mapStateToProps, {
+  getAllStocks,
+  setSearchStock,
+  searchStock,
+})(StockPage);

@@ -59,7 +59,7 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
   );
 
   return (
-    <nav className="navbar bg-[color:var(--main-color)] flex items-center">
+    <nav className="navbar bg-[color:var(--main-color)]">
       <h1>
         <Link to="/">
           <span className="text-[20px] font-bold">taekstock</span>
